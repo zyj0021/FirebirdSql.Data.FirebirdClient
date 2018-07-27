@@ -1320,28 +1320,24 @@ namespace FirebirdSql.Data.FirebirdClient
 			}
 		}
 
-		[Conditional(TraceHelper.ConditionalSymbol)]
 		private void LogCommand()
 		{
-			if (TraceHelper.HasListeners)
+			var message = new StringBuilder();
+			message.AppendLine("Command:");
+			message.AppendLine(_commandText);
+			message.AppendLine("Parameters:");
+			if (_parameters != null)
 			{
-				StringBuilder message = new StringBuilder();
-				message.AppendLine("Command:");
-				message.AppendLine(_commandText);
-				message.AppendLine("Parameters:");
-				if (_parameters != null)
+				foreach (FbParameter item in _parameters)
 				{
-					foreach (FbParameter item in _parameters)
-					{
-						message.AppendLine(string.Format("Name:{0}\tType:{1}\tUsed Value:{2}", item.ParameterName, item.FbDbType, (!IsNullParameterValue(item.InternalValue) ? item.InternalValue : "<null>")));
-					}
+					message.AppendLine(string.Format("Name:{0}\tType:{1}\tUsed Value:{2}", item.ParameterName, item.FbDbType, (!IsNullParameterValue(item.InternalValue) ? item.InternalValue : "<null>")));
 				}
-				else
-				{
-					message.AppendLine("<no parameters>");
-				}
-				TraceHelper.Trace(TraceEventType.Information, message.ToString());
 			}
+			else
+			{
+				message.AppendLine("<no parameters>");
+			}
+			TraceHelper.Trace(TraceEventType.Information, message.ToString());
 		}
 
 		private bool IsNullParameterValue(object value)
