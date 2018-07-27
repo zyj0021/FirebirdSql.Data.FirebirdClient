@@ -10,10 +10,10 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<DefineConstants>EFCORE;TRACE</DefineConstants>
+		<DefineConstants>EFCORE</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<DefineConstants>EFCORE;DEBUG;TRACE</DefineConstants>
+		<DefineConstants>EFCORE;DEBUG</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.3" />

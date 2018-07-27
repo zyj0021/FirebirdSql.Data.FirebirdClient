@@ -10,10 +10,10 @@
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<DefineConstants>EF6;TRACE</DefineConstants>
+		<DefineConstants>EF6</DefineConstants>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<DefineConstants>EF6;DEBUG;TRACE</DefineConstants>
+		<DefineConstants>EF6;DEBUG</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Include="..\FirebirdSql.Data.FirebirdClient\Properties\VersionInfo.cs" Link="Properties\VersionInfo.cs" />
